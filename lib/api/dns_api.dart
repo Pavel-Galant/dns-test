@@ -21,6 +21,7 @@ class _DnsApi implements API {
           body: json.encode(params)        
       );
       final jsonData = response.body;
+      //print(jsonData.runtimeType);
       return jsonData;
     } catch (error) {
       throw error;

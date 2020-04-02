@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import '../api/dns_api.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -111,12 +112,13 @@ class LoginFormState extends State<LoginForm> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: RaisedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
                     try {
-                      final response = this._api.getToken(params: this._data);
-                      print(response);
+                      final response = await this._api.getToken(params: this._data);
+                      this._apiToken = json.decode(response)['data'];
+                      print(this._apiToken);
                     } catch (error) {
                       Scaffold.of(context)
                           .showSnackBar(SnackBar(content: Text(error.toString())));
