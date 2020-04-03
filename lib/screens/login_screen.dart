@@ -117,16 +117,16 @@ class LoginFormState extends State<LoginForm> {
                     _formKey.currentState.save();
                     try {
                       this._apiToken = await this._api.getToken(params: this._data);
-                      print(this._apiToken);
+                      //print(this._apiToken);
                       Navigator.pushNamed(
                         context,
                         DataScreen.routeName,
                         arguments: {'data': this._data, 'token': this._apiToken},
                       );
                     } catch (error) {
-                      print(error.toString());
+                      //print(error);
                       Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Ошибка при получении токена')));
+                          .showSnackBar(SnackBar(content: Text('Ошибка при получении токена ($error)')));
                     }
                   }
                 },

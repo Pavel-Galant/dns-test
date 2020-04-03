@@ -83,9 +83,9 @@ class DataFormState extends State<DataForm> {
                       Scaffold.of(context)
                           .showSnackBar(SnackBar(content: Text('Данные успешно отправлены на сервер')));
                     } catch (error) {
-                      print(error.toString());
+                      //print(error);
                       Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text('Ошибка при отправке данных на сервер')));
+                          .showSnackBar(SnackBar(content: Text("Ошибка при отправке данных на сервер ($error)")));
                     }
                   }
                 },
