@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import '../api/dns_api.dart';
+import 'data_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -116,12 +116,17 @@ class LoginFormState extends State<LoginForm> {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
                     try {
-                      final response = await this._api.getToken(params: this._data);
-                      this._apiToken = json.decode(response)['data'];
+                      this._apiToken = await this._api.getToken(params: this._data);
                       print(this._apiToken);
+                      Navigator.pushNamed(
+                        context,
+                        DataScreen.routeName,
+                        arguments: {'data': this._data, 'token': this._apiToken},
+                      );
                     } catch (error) {
+                      print(error.toString());
                       Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text(error.toString())));
+                          .showSnackBar(SnackBar(content: Text('Ошибка при получении токена')));
                     }
                   }
                 },

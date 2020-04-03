@@ -12,7 +12,8 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => LoginScreen(),
-      '/data': (context) => DataScreen(),
+      //'/data': (context) => DataScreen(),
+      DataScreen.routeName: (context) => DataScreen(),
     },
   ));
 }
