@@ -47,7 +47,7 @@ class _DnsApi implements API {
   Future<void> summary({Map <String, String>params, token}) async {
     try {
       final response = await post("https://vacancy.dns-shop.ru/api/candidate/token",
-          headers: {"Content-Type": "application/json"},
+          headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
           body: convert.jsonEncode(params)        
       );
       final data = convert.jsonDecode(response.body);
