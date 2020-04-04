@@ -36,13 +36,11 @@ class DataFormState extends State<DataForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextFormField(
               decoration: InputDecoration(
@@ -72,8 +70,9 @@ class DataFormState extends State<DataForm> {
                   this._data['summary'] = value;
                 }
             ),
+            Expanded(child: Container()),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.only(bottom: 10.0),
               child: RaisedButton(
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
@@ -89,7 +88,7 @@ class DataFormState extends State<DataForm> {
                     }
                   }
                 },
-                child: Text('Submit'),
+                child: Text('ЗАРЕГИСТРИРОВАТЬСЯ'),
               ),
             ),
           ],

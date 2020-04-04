@@ -22,14 +22,7 @@ class LoginForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class LoginFormState extends State<LoginForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
   Map <String, String>_data = {
     'firstName': '',
@@ -43,13 +36,11 @@ class LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TextFormField(
               decoration: InputDecoration(
@@ -109,8 +100,9 @@ class LoginFormState extends State<LoginForm> {
                   this._data['phone'] = value;
                 }
             ),
+            Expanded(child: Container()),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.only(bottom: 10.0),
               child: RaisedButton(
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
@@ -130,7 +122,7 @@ class LoginFormState extends State<LoginForm> {
                     }
                   }
                 },
-                child: Text('Submit'),
+                child: Text('ПОЛУЧИТЬ КЛЮЧ'),
               ),
             ),
           ],
