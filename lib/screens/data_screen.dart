@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import '../api/dns_api.dart';
@@ -78,7 +79,9 @@ class DataFormState extends State<DataForm> {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
                     try {
+                      //  await _api.summary(params: {...this._data, ...widget.loginData}, token: widget.token);
                       await _api.testSummary(params: {...this._data, ...widget.loginData}, token: widget.token);
+                      
                       Scaffold.of(context)
                           .showSnackBar(SnackBar(content: Text('Данные успешно отправлены на сервер')));
                     } catch (error) {
