@@ -46,11 +46,12 @@ class _DnsApi implements API {
   @override
   Future<void> summary({Map <String, String>params, token}) async {
     try {
-      final response = await post("https://vacancy.dns-shop.ru/api/candidate/token",
+      final response = await post("https://vacancy.dns-shop.ru/api/candidate/summary",
           headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
           body: convert.jsonEncode(params)        
       );
       final data = convert.jsonDecode(response.body);
+      print(data);
       if (data['code'] > 0) throw Exception(data['message']);
     } catch (error) {
       throw error;
